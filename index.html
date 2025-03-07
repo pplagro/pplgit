@@ -23,9 +23,9 @@
             text-align: center;
         }
 
-        /* Hamburger Menu */
+        /* Hamburger Menu (for smaller screens) */
         .menu-icon {
-            display: none;
+            display: none; /* Hidden by default, shown on small screens */
             flex-direction: column;
             justify-content: space-around;
             width: 30px;
@@ -40,7 +40,7 @@
             border-radius: 5px;
         }
 
-        /* Navigation Bar (default state, desktop) */
+        /* Navigation Bar (default state for desktop) */
         nav {
             background-color: #333;
             overflow: hidden;
@@ -59,16 +59,29 @@
             color: black;
         }
 
-        /* Mobile Navigation */
+        /* Mobile Navigation - hidden by default */
         .menu-links {
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
-        /* Initially hide the menu links on small screens */
         .menu-links a {
-            display: none;
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            border-top: 1px solid #444;
+        }
+
+        .menu-links a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .menu-links.active {
+            display: flex;
+            flex-direction: column;
         }
 
         /* Main Container for products and layout */
@@ -147,6 +160,12 @@
                 display: block;
             }
 
+            /* Show hamburger icon */
+            .menu-icon {
+                display: flex;
+            }
+
+            /* Hide the menu by default on smaller screens */
             .menu-links {
                 display: none;
                 flex-direction: column;
@@ -155,24 +174,8 @@
                 background-color: #333;
             }
 
-            .menu-links a {
-                display: block;
-                padding: 14px 20px;
-                text-decoration: none;
-                color: white;
-                border-top: 1px solid #444;
-            }
-
-            .menu-links a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
+            /* Show the menu when active */
             .menu-links.active {
-                display: flex;
-            }
-
-            .menu-icon {
                 display: flex;
             }
         }
@@ -188,11 +191,14 @@
 
     <!-- Navigation Bar -->
     <nav>
+        <!-- Hamburger Icon -->
         <div class="menu-icon" onclick="toggleMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
+
+        <!-- Menu Links -->
         <div class="menu-links">
             <a href="#home">Home</a>
             <a href="#shop">Shop</a>
