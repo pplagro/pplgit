@@ -7,7 +7,7 @@
     <meta name="description" content="Premium Ghee Store - 100% Pure, Organic, and Healthy Ghee">
     <title>Ghee Shop - 100% Pure Organic Ghee</title>
     <style>
-        /* Simple CSS for layout */
+        /* Basic Reset */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -15,6 +15,7 @@
             background-color: #f4f4f4;
         }
 
+        /* Header Section */
         header {
             background-color: #ffcc00;
             color: white;
@@ -22,16 +23,35 @@
             text-align: center;
         }
 
+        /* Hamburger Menu */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            height: 4px;
+            width: 30px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* Navigation Bar (default state, desktop) */
         nav {
             background-color: #333;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
         }
 
         nav a {
             color: white;
             padding: 14px 20px;
             text-decoration: none;
-            float: left;
         }
 
         nav a:hover {
@@ -39,6 +59,19 @@
             color: black;
         }
 
+        /* Mobile Navigation */
+        .menu-links {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Initially hide the menu links on small screens */
+        .menu-links a {
+            display: none;
+        }
+
+        /* Main Container for products and layout */
         .main-container {
             display: flex;
             flex-wrap: wrap;
@@ -57,9 +90,9 @@
         }
 
         .product-card img {
-            max-width: 100%; /* Makes sure image doesn't overflow */
+            max-width: 100%;
             height: auto;
-            object-fit: cover; /* Ensures image is cropped to fit */
+            object-fit: cover;
             border-radius: 8px;
         }
 
@@ -100,11 +133,48 @@
             width: 100%;
         }
 
+        /* Hero Section (Banner) */
         .hero {
             background-color: #ffcc00;
             color: white;
             padding: 60px;
             text-align: center;
+        }
+
+        /* Media Queries to handle smaller screens */
+        @media (max-width: 768px) {
+            nav {
+                display: block;
+            }
+
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                background-color: #333;
+            }
+
+            .menu-links a {
+                display: block;
+                padding: 14px 20px;
+                text-decoration: none;
+                color: white;
+                border-top: 1px solid #444;
+            }
+
+            .menu-links a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .menu-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -118,10 +188,17 @@
 
     <!-- Navigation Bar -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu-links">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <!-- Hero Section (Banner) -->
@@ -168,6 +245,13 @@
         <p>&copy; 2025 Premium Ghee Store. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for menu toggle -->
+    <script>
+        function toggleMenu() {
+            var menuLinks = document.querySelector('.menu-links');
+            menuLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
